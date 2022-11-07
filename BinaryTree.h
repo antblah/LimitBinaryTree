@@ -1,86 +1,65 @@
-# pragma once
-#include <list>
+#include <cstddef>
 
-class LinkedBinaryTree {
+// Forward Declaration
+struct Limit;                                   
 
-    protected:
-    
-        struct Limit;
+struct Order {
+    int idNumber;
+    bool buyOrSell;
+    int size;
+    int entryTime;
+    Order* nextOrder;
+    Order* prevOrder;
+    Limit* parentLimit;
 
-        struct Order {
-            int idNumber;
-            bool buyOrSell;
-            int shares;
-            int entryTime;
-            int eventTime;
-            Order* nextOrder;
-            Order* prevOrder;
-            Limit* parentLimit;
+    Order() : idNumber(), buyOrSell(), entryTime(), nextOrder(NULL),
+        prevOrder(NULL), parentLimit(NULL) { } 
+};
 
-            Order() : idNumber(), buyOrSell(), shares(), entryTime(), eventTime(), nextOrder(NULL),
-                prevOrder(NULL), parentLimit(NULL) { } 
-        };
+struct Limit {
+    float limitPrice;
+    int size;
+    int totalVolume;
+    Limit *parent;
+    Limit *leftChild;
+    Limit *rightChild;
+    Order *headOrder;
+    Order *tailOrder;
 
-        struct Limit {
-            int limitPrice;
-            int size;
-            int totalVolume;
-            Limit *parent;
-            Limit *leftChild;
-            Limit *rightChild;
-            Order *headOrder;
-            Order *tailOrder;
-
-            Limit() : limitPrice(), size(), totalVolume(), parent(NULL), 
-                    leftChild(NULL), rightChild(NULL), headOrder(NULL), tailOrder(NULL) { } // Constructor  
-        };
+    Limit() : limitPrice(), size(), totalVolume(), parent(NULL), 
+            leftChild(NULL), rightChild(NULL), headOrder(NULL), tailOrder(NULL) { } // Constructor  
+};
 
 
-        struct Book {
-            Limit *buyTree;
-            Limit *sellTree;
-            Limit *lowestSell;
-            Limit *highestBuy;
-
-            Book() : buyTree(NULL), sellTree(NULL), lowestSell(NULL), highestBuy(NULL) { }
-        };
-
-    
-    class Position {
-        
-        private:
-            Limit *v;
-        
-        public:
-            Position(Limit *_v); 
-            int operator*();
-            Position left() const;          
-            Position right() const;
-            Position parent() const;
-            bool isRoot() const;
-            bool isExternal() const;
-            friend class LinkedBinaryTree;
-        
-        };
-
-        typedef std::list<Position>PositionList;
+class BinaryTree {
+    private:
+        Limit *root;
 
     public:
-        LinkedBinaryTree();
-        int size() const;
-        bool empty() const;
-        Position root() const;
-        PositionList positions() const;
-        void addRoot();
-        void expandExternal(const Position& p);
-        Position removeAboveExternal(const Position& p);
+        BinaryTree() { root = NULL; }
+        ~BinaryTree();
+
+        
+        // Create a new Order to be placed at the Limit price levels
+        Order *createNewOrder(int orderNumber, bool orderType, int volume, float orderPriceLevel);
+
+        // Create a new Limit Node
+        Limit *createNewLimit(float priceLevel);
+
+        
+        // In-order traversal binary search tree
+        void inOrder(Limit *limit);
 
 
-    protected:
-        void preorder(Limit* v, PositionList& pl) const;
+        // Insert new Limit price level on binary tree
+        void insert(Limit *limit, float priceLevel);
 
-    private:
-        Limit* _root;
-        int n;
+
+        // Get root
+        Limit *getRoot();
+
+        // Free memory
+        void freeMemory(Limit *limit);
 
 };
+
