@@ -1,24 +1,7 @@
-#include <iostream>
 #include "BinaryTree.h"
 
-
-// Create a new Order
-Order *BinaryTree::createNewOrder(int orderNumber, bool orderType, int volume, float orderPriceLevel) {
-    Order *newOrder = new Order();
-    newOrder->idNumber = orderNumber;
-    newOrder->buyOrSell = orderType;
-    newOrder->size = volume;
-    newOrder->entryTime = 0;
-    newOrder->nextOrder == NULL;
-    newOrder->prevOrder == NULL;
-    newOrder->parentLimit == NULL;
-
-    return newOrder;
-}
-
-
 // Create a new Limit Node
-Limit *BinaryTree::createNewLimit(float priceLevel) {
+BinaryTree::Limit *BinaryTree::createNewLimit(float priceLevel) {
     Limit *newLimit = new Limit();
     newLimit->limitPrice = priceLevel;
     newLimit->leftChild = NULL;
@@ -67,7 +50,7 @@ void BinaryTree::insert(Limit *limit, float priceLevel) {
     }
 }
 
-Limit *BinaryTree::getRoot() {
+BinaryTree::Limit *BinaryTree::getRoot() {
     return root;
 }
 
@@ -85,24 +68,3 @@ void BinaryTree::freeMemory(Limit *limit) {
 BinaryTree::~BinaryTree() { freeMemory(root); }
 
 
-int main() {
-
-    BinaryTree *buyTree = new BinaryTree();
-
-    buyTree->insert(buyTree->getRoot(), 60.15);
-    buyTree->insert(buyTree->getRoot(), 60.15);
-    buyTree->insert(buyTree->getRoot(), 60.35);
-    buyTree->insert(buyTree->getRoot(), 50.15);
-    buyTree->insert(buyTree->getRoot(), 42.15);
-    buyTree->insert(buyTree->getRoot(), 35.00);
-    buyTree->insert(buyTree->getRoot(), 20.05);
-
-
-    std::cout << "Buy order book: \n";
-    buyTree->inOrder(buyTree->getRoot());
-    std::cout << "\n";
-
-    delete buyTree;
-
-    return 0;
-}
