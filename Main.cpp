@@ -20,6 +20,9 @@ int main() {
     buyTree->inOrder(buyTree->getRoot());
     std::cout << "\n";
 
+    bool test = buyTree->isLimit(buyTree->getRoot(), 46); 
+    std::cout << test << "\n";
+
     delete buyTree;
 
     return 0;
