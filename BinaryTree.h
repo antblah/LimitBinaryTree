@@ -28,10 +28,15 @@ class BinaryTree {
         Limit *createNewLimit(float priceLevel);
 
         
+        // Does Limit already exist in the book
+        bool isLimit(Limit *limit, float priceLevel);
+        
+        
+        
         // In-order traversal binary search tree
         void inOrder(Limit *limit);
 
-
+        
         // Insert new Limit price level on binary tree
         void insert(Limit *limit, float priceLevel);
 

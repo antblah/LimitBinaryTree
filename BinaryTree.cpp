@@ -21,6 +21,23 @@ void BinaryTree::inOrder(Limit *limit) {
     inOrder(limit->rightChild);
 }
 
+
+bool BinaryTree::isLimit(Limit *limit, float priceLevel) {
+    if(limit == NULL) {
+        return false;
+    }
+
+    if(limit->limitPrice == priceLevel) {
+        return true;
+    }
+
+    bool res1 = isLimit(limit->leftChild, priceLevel);
+    if(res1) return true;
+
+    bool res2 = isLimit(limit->rightChild, priceLevel);
+    return res2;
+}
+
 // Insert new Limit price level on binary tree
 void BinaryTree::insert(Limit *limit, float priceLevel) {
     if(root == NULL) {
