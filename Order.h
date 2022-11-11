@@ -1,4 +1,6 @@
+#pragma once
 #include <cstddef>
+#include "OrderLinkedList.h"
 
 
 // Forward Declaration
@@ -9,16 +11,16 @@ class Order {
         int idNumber;
         bool buyOrSell;
         int size;
-        int entryTime;
         Order* nextOrder;
         Order* prevOrder;
         Limit *parentLimit;
 
+        friend class OrderLinkedList; 
+
     public:
 
-        Order() : idNumber(), buyOrSell(), entryTime(), nextOrder(NULL), prevOrder(NULL), parentLimit(NULL) { }
+        Order() : idNumber(), buyOrSell(), size(), nextOrder(NULL), prevOrder(NULL), parentLimit(NULL) { }
 
         // Create a new Order to be placed at the Limit price levels
-        Order *createNewOrder(int orderNumber, bool orderType, int volume, float orderPriceLevel);
- 
+        Order *createNewOrder(int idNumber, bool buyOrSell, int size, float orderPriceLevel);
 };
