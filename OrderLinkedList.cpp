@@ -1,5 +1,6 @@
 #include "Order.h"
 #include "OrderLinkedList.h"
+#include "BinaryTree.h"
 
 OrderLinkedList::OrderLinkedList() {              // Constructor 
     header = new Order;
@@ -40,6 +41,7 @@ void OrderLinkedList::add(Order* v, int e) {            // Insert a new node bef
 void OrderLinkedList::addFront(int e) {
     add(header->nextOrder, e);
 }
+
 void OrderLinkedList::addBack(int e) {
     add(trailer, e);
 }
@@ -58,4 +60,22 @@ void OrderLinkedList::removeFront() {
 
 void OrderLinkedList::removeBack() {
     remove(trailer->prevOrder);
+}
+
+
+int OrderLinkedList::totalVolume() {
+
+return 0;
+
+}
+
+int OrderLinkedList::totalOrders() {
+
+return 0;
+
+}
+
+
+void OrderLinkedList::printOrders() {
+
 }
