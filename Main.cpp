@@ -1,29 +1,30 @@
 #include <iostream>
 #include "BinaryTree.h"
-
+#include "Order.h"
 
 
 int main() {
 
-    BinaryTree *buyTree = new BinaryTree();
-
-    buyTree->insert(buyTree->getRoot(), 60.15);
-    buyTree->insert(buyTree->getRoot(), 60.15);
-    buyTree->insert(buyTree->getRoot(), 60.35);
-    buyTree->insert(buyTree->getRoot(), 50.15);
-    buyTree->insert(buyTree->getRoot(), 42.15);
-    buyTree->insert(buyTree->getRoot(), 35.00);
-    buyTree->insert(buyTree->getRoot(), 20.05);
+    BinaryTree *bidTree = new BinaryTree();
+    Order one = Order(1, 0, 300, 25.50);
+    
+    bidTree->insert(bidTree->getRoot(), 60.15);
+    bidTree->insert(bidTree->getRoot(), 60.15);
+    bidTree->insert(bidTree->getRoot(), 60.35);
+    bidTree->insert(bidTree->getRoot(), 50.15);
+    bidTree->insert(bidTree->getRoot(), 42.15);
+    bidTree->insert(bidTree->getRoot(), 35.00);
+    bidTree->insert(bidTree->getRoot(), 20.05);
 
 
     std::cout << "Buy order book: \n";
-    buyTree->inOrder(buyTree->getRoot());
+    bidTree->inOrder(bidTree->getRoot());
     std::cout << "\n";
 
-    bool test = buyTree->isLimit(buyTree->getRoot(), 46); 
+    bool test = bidTree->isLimit(bidTree->getRoot(), 35); 
     std::cout << test << "\n";
 
-    delete buyTree;
+    delete bidTree;
 
     return 0;
 }
