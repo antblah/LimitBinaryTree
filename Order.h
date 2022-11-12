@@ -11,6 +11,7 @@ class Order {
         int idNumber;
         bool buyOrSell;
         int size;
+        float orderPriceLevel;
         Order* nextOrder;
         Order* prevOrder;
         Limit *parentLimit;
@@ -19,8 +20,9 @@ class Order {
 
     public:
 
-        Order() : idNumber(), buyOrSell(), size(), nextOrder(NULL), prevOrder(NULL), parentLimit(NULL) { }
 
         // Create a new Order to be placed at the Limit price levels
+        Order();
+        Order(int idNumber, bool buyOrSell, int size, float orderPriceLevel);
         Order *createNewOrder(int idNumber, bool buyOrSell, int size, float orderPriceLevel);
 };
