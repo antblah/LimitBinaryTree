@@ -3,10 +3,8 @@
 #include "OrderLinkedList.h"
 #include "Limit.h"
 
-
 // Forward Declaration
-struct Limit;
-
+//class Limit;
 
 class Order {
     public:    

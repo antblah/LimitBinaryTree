@@ -1,9 +1,13 @@
-Book.o:			Source.o Order.o BinaryTree.o OrderLinkedList.o
-				g++ -std=c++17 -o Book Main.o Order.o BinaryTree.o OrderLinkedList.o
+Book.o:			Source.o Order.o BinaryTree.o OrderLinkedList.o Limit.o
+				g++ -std=c++17 -o Book Main.o Order.o BinaryTree.o OrderLinkedList.o Limit.o
 
 
 Source.o:		Main.cpp BinaryTree.h
 				g++ -c Main.cpp
+
+
+Limit.o:  		Limit.cpp Limit.h
+				g++ -c Limit.cpp
 
 Order.o:   		Order.cpp Order.h
 				g++ -c Order.cpp

@@ -4,6 +4,8 @@
 #include "Order.h"
 
 
+class Order;
+
 class BinaryTree {
 
     public:
