@@ -14,8 +14,8 @@ public:
     void addBack(int e);
     void removeFront();
     void removeBack();
-    int totalVolume();
-    int totalOrders();
+    int totalSize(Order* v);
+    int totalOrders(Order* v);
     void printOrders();
 
 private:

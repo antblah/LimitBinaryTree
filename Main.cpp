@@ -1,14 +1,17 @@
+#include "Order.h"
 #include <iostream>
 #include "BinaryTree.h"
-#include "Order.h"
-
+#include "Limit.h"
 
 int main() {
 
     BinaryTree *bidTree = new BinaryTree();
-    Order one = Order(1, 0, 300, 25.50);
+
+    Limit oneL = Limit(25.00, 200, 200, NULL, NULL, NULL, NULL, NULL);
+    Order one = Order(1, true, 300, 25.50, NULL, NULL, NULL); // How do you insert a specific limit in here?
+    one.parentLimit = &oneL;
     
-    bidTree->insert(bidTree->getRoot(), 60.15);
+    bidTree->insert(bidTree->getRoot(), 43.43);
     bidTree->insert(bidTree->getRoot(), 60.15);
     bidTree->insert(bidTree->getRoot(), 60.35);
     bidTree->insert(bidTree->getRoot(), 50.15);

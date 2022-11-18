@@ -63,19 +63,27 @@ void OrderLinkedList::removeBack() {
 }
 
 
-int OrderLinkedList::totalVolume() {
-
-return 0;
+int OrderLinkedList::totalSize(Order* v) {
+    int size = 0;
+    while(v->nextOrder != NULL) {
+        size += v->size;
+    }
+return size;
 
 }
 
-int OrderLinkedList::totalOrders() {
+int OrderLinkedList::totalOrders(Order* v) {
+    int counter = 0;
+    while(v->nextOrder != NULL) {
+        ++counter;
+    }
 
-return 0;
+return counter;
 
 }
 
 
 void OrderLinkedList::printOrders() {
+
 
 }
