@@ -1,7 +1,8 @@
 #include "BinaryTree.h"
 
+
 // Create a new Limit Node
-BinaryTree::Limit *BinaryTree::createNewLimit(float priceLevel) {
+Limit *BinaryTree::createNewLimit(float priceLevel) {
     Limit *newLimit = new Limit();
     newLimit->limitPrice = priceLevel;
     newLimit->leftChild = NULL;
@@ -10,6 +11,7 @@ BinaryTree::Limit *BinaryTree::createNewLimit(float priceLevel) {
     newLimit->tailOrder = NULL;
     return newLimit;
 }
+
 
 // In-order traversal binary search tree
 void BinaryTree::inOrder(Limit *limit) {
@@ -67,7 +69,7 @@ void BinaryTree::insert(Limit *limit, float priceLevel) {
     }
 }
 
-BinaryTree::Limit *BinaryTree::getRoot() {
+Limit *BinaryTree::getRoot() {
     return root;
 }
 

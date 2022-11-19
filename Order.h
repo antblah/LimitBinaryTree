@@ -3,9 +3,6 @@
 #include "OrderLinkedList.h"
 #include "Limit.h"
 
-// Forward Declaration
-//class Limit;
-
 class Order {
     public:    
         int idNumber;
@@ -20,6 +17,8 @@ class Order {
 
         // Create a new Order to be placed at the Limit price levels
         Order();
+        
         Order(int idNumber, bool buyOrSell, int size, float orderPriceLevel, Order* nextOrder, Order*prevOrder, Limit* parentLimit);
+        
         Order *createNewOrder(int idNumber, bool buyOrSell, int size, float orderPriceLevel);
 };

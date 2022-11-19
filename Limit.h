@@ -15,7 +15,9 @@ class Limit {
 
 
     Limit();
+
     Limit(float limitPrice, int size, int totalVolume, Limit *parent, 
             Limit *leftChild, Limit *rightChild, Order *headOrder, Order *tailOrder);
+
 };
                            
