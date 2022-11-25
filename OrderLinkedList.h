@@ -1,17 +1,22 @@
 #pragma once
 
 class Order;
+class Limit;
 
 class OrderLinkedList {
 
 public:
-    OrderLinkedList();                      
+    OrderLinkedList();
+    OrderLinkedList(float priceLevel);                      
     ~OrderLinkedList();
     bool empty() const;
     const int front() const;
     const int back() const;
-    void addFront(int e);
-    void addBack(int e);
+    
+    void addFront(float e);
+    void addBack(float e);
+    void addOrderFront(float priceLevel, Order* v);
+
     void removeFront();
     void removeBack();
     int totalSize(Order* v);
@@ -22,6 +27,7 @@ private:
 
     Order* header;
     Order* trailer;
+    float level;
 
 protected:
     void add(Order* v, int e);

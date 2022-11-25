@@ -7,7 +7,16 @@ OrderLinkedList::OrderLinkedList() {              // Constructor
     trailer = new Order;
     header->nextOrder = trailer;
     trailer->prevOrder = header;
-}            
+}
+
+
+OrderLinkedList::OrderLinkedList(float priceLevel) {              // Constructor 
+    level = priceLevel;
+    header = new Order;
+    trailer = new Order;
+    header->nextOrder = trailer;
+    trailer->prevOrder = header;
+}
 
 OrderLinkedList::~OrderLinkedList() {
     while (!empty()) {
@@ -38,12 +47,23 @@ void OrderLinkedList::add(Order* v, int e) {            // Insert a new node bef
     v->prevOrder->nextOrder = v->prevOrder = u;  
 }
 
-void OrderLinkedList::addFront(int e) {
+void OrderLinkedList::addFront(float e) {
     add(header->nextOrder, e);
 }
 
-void OrderLinkedList::addBack(int e) {
+void OrderLinkedList::addBack(float e) {
     add(trailer, e);
+}
+
+void OrderLinkedList::addOrderFront(float priceLevel,  Order* v) {
+    Order* u = new Order;
+    u->idNumber = v->idNumber;
+    u->buyOrSell = v->buyOrSell;
+    u->size = v->size;
+    u->orderPriceLevel = v->orderPriceLevel;
+    u->nextOrder = v;
+    u->prevOrder = v->prevOrder;
+    v->prevOrder->nextOrder = v->prevOrder = u;
 }
 
 void OrderLinkedList::remove(Order* v) {
